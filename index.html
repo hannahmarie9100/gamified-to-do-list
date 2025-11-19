@@ -1,0 +1,50 @@
+<!-- 
+    This is the main page strcucture for the website
+    loads CSS, Java script, and contains all user interface elements
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gamified To-Do List</title>
+  </head>
+
+  <body>
+    <div class="app">
+      <header class="app-header">
+        <h1>Gamified To-Do List</h1>
+        <p>Complete tasks to earns rewards!</p>
+      </header>
+
+      <section class="add-task-section">
+        <h2>Add New Task</h2>
+
+        <div class="task-inputs">
+          <input id="taskInput" type="text" placeholder="Enter task: " />
+          <button id="addTaskBtn">Add Task</button>
+        </div>
+      </section>
+
+      <section class="task-list-section">
+        <h2>Your Tasks</h2>
+        <ul id="taskList">
+          <!-- Tasks will be dynamically added here -->
+        </ul>
+      </section>
+
+      <section class="reawrds-section">
+        <h2>Your Rewards</h2>
+        <p>Earn more points to unlock more badges and items</p>
+
+        <div id="rewardItems" class="reward-items">
+          <!-- Reward items will be dynamically added here -->
+        </div>
+      </section>
+
+      <footer class="app-footer">
+        <small>Gamified To-Do - 2025</small>
+      </footer>
+    </div>
+  </body>
+</html>

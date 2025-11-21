@@ -1,3 +1,76 @@
 /*
     handles all visual design (layout, colors, fonts, animations)
 */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.app {
+  background-color: #ebcbd1;
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.rubik-puddles-regular {
+  font-family: "Rubik Puddles", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  text-shadow: 1px 0 0 currentColor, 0 1px 0 currentColor, -1px 0 0 currentColor,
+    0 -1px 0 currentColor;
+}
+
+.open-sans-variable {
+  font-family: "Open Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.app-header h1 {
+  color: black;
+  font-size: 2.5em;
+}
+
+.app-header p {
+  color: #333;
+  font-size: 1.2em;
+  font-family: ;
+}
+
+.nav-btn {
+  display: inline-block;
+  background-color: white;
+  color: pink;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: #eeeded;
+  transform: translateY(-2px);
+}

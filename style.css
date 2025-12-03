@@ -16,15 +16,28 @@ body {
   display: flex;
   justify-content: center;
   padding: 20px;
+  position: relative;
 }
 
 .app {
+  margin-top: 60px;
   background-color: #ebcbd1;
   width: 100%;
   max-width: 1000px;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.WIP-banner {
+  position: absolute;
+  background-color: #ffea97;
+  color: black;
+  text-align: center;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 /* Font styles */

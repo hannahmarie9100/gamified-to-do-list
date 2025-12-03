@@ -2,6 +2,8 @@
     handles all visual design (layout, colors, fonts, animations)
 */
 
+/* Basic CSS background */
+
 * {
   margin: 0;
   padding: 0;
@@ -25,6 +27,8 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
+/* Font styles */
+
 .rubik-puddles-regular {
   font-family: "Rubik Puddles", system-ui;
   font-weight: 400;
@@ -40,6 +44,8 @@ body {
   font-style: normal;
   font-variation-settings: "wdth" 100;
 }
+
+/* Header styles */
 
 .app-header {
   text-align: center;
@@ -57,6 +63,8 @@ body {
   font-family: ;
 }
 
+/* Navigation button styles */
+
 .nav-btn {
   display: inline-block;
   background-color: white;
@@ -73,4 +81,41 @@ body {
 .nav-btn:hover {
   background-color: #eeeded;
   transform: translateY(-2px);
+}
+
+/* Two Col Section */
+
+.two-col {
+  display: flex;
+  gap: 20px;
+}
+
+/* Timer Section */
+.timer-section {
+  background-color: rgba(0, 0, 0, 0.5);
+  flex: 1;
+  padding: 15px;
+  border-radius: 10px;
+  /* TODO: make box smaller and in middle*/
+}
+
+.timer-section h2 {
+  color: white;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  /* TODO: center text, change font */
+}
+
+.timer-section p {
+  color: white;
+  font-size: 2em;
+  /* TODO: center text, change font*/
+}
+
+/* Add Task Section */
+.add-task-section {
+  background-color: white;
+  flex: 1;
+  padding: 15px;
+  border-radius: 10px;
 }

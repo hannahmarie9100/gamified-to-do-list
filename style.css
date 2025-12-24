@@ -14,9 +14,9 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: white;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   padding: 20px;
-  position: relative;
 }
 
 .app {
@@ -30,7 +30,6 @@ body {
 }
 
 .WIP-banner {
-  position: absolute;
   background-color: #ffea97;
   color: black;
   text-align: center;
@@ -38,6 +37,8 @@ body {
   font-weight: bold;
   border-radius: 5px;
   margin-bottom: 5px;
+  width: 100%;
+  max-width: 1000px;
 }
 
 /* Font styles */
@@ -73,7 +74,7 @@ body {
 .app-header p {
   color: #333;
   font-size: 1.2em;
-  font-family: ;
+  font-family: "Open Sans", sans-serif;
 }
 
 /* Navigation button styles */
@@ -100,16 +101,28 @@ body {
 
 .two-col {
   display: flex;
-  gap: 20px;
+  gap: 40px;
+  width: 100%;
+  align-items: flex-start;
+  position: relative;
 }
 
 /* Timer Section */
 .timer-section {
-  background-color: rgba(0, 0, 0, 0.5);
-  flex: 1;
-  padding: 15px;
-  border-radius: 10px;
-  /* TODO: make box smaller and in middle*/
+  flex: 0 0 42%; /* make the left card 42 percent width of the other */
+  height: 220px;
+  background: #d4b2b9;
+  border-radius: 18px; /* rounded corners */
+  overflow: hidden; /* IMPORTANT - hides overflow content */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft drop shadow */
+  padding: 20px;
+
+  display: flex; /* stacks the timer and text */
+  flex-direction: column; /* stacks the timer and text */
+  align-items: center; /* centers the timer and text */
+  align-self: center; /* centers the card */
+  justify-content: center; /* centers the timer and text */
+  gap: 18px;
 }
 
 .timer-section h2 {
@@ -127,8 +140,69 @@ body {
 
 /* Add Task Section */
 .add-task-section {
-  background-color: white;
   flex: 1;
-  padding: 15px;
-  border-radius: 10px;
+  height: max-content;
+  background: #ffe8ed;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  padding: 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.add-task-section h2 {
+  text-align: center;
+}
+
+.task-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.task-inputs input {
+  padding: 10px;
+  border-radius: 999px;
+  border: none;
+  color: grey;
+  width: 200px;
+  font-size: 1em;
+
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
+
+.task-inputs input:focus {
+  box-shadow: 0 0 10px rgba(242, 189, 242, 0.3);
+  transform: scale(1.05);
+}
+
+.task-inputs button {
+  padding: 10px 20px;
+  border-radius: 999px;
+  background-color: #ffffff;
+  border: none;
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.task-inputs button:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.task-inputs button:active {
+  /* when i press the button the box shadow shows up */
+  transform: transformY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.task-list {
+  max-height: 380px;
+  overflow-y: auto; /* adds a scroll bar when content exceeds max-height */
+  padding-right: 6px; /* gives room for scrollbar */
 }

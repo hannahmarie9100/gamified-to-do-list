@@ -25,6 +25,8 @@
     />
   </head>
 
+  <script src="script.js"></script>
+
   <body>
     <div class="WIP-banner">
       <p>🚧 Work In Progress - New Features Coming Soon! 🚧</p>
@@ -48,13 +50,13 @@
           <h2>Add New Task</h2>
 
           <div class="task-inputs">
-            <input id="taskInput" type="text" placeholder="Enter task: " />
+            <input id="taskInput" type="text" placeholder="Enter task... " />
             <button id="addTaskBtn">Add Task</button>
           </div>
 
-          <ul id="tasks-list">
-            <!-- Tasks will be dynamically added here -->
-          </ul>
+          <div class="task-list">
+            <ul id="taskList"></ul>
+          </div>
         </section>
       </div>
 

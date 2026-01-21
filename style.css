@@ -241,3 +241,39 @@ body {
   overflow-wrap: anywhere;
   min-width: 0;
 }
+
+/* Delete button styles */
+.delete-btn {
+  margin-left: auto;
+  background: none;
+  border: none;
+  font-size: 1.43em;
+  color: #ff6b81;
+}
+
+/* timer button styles */
+.timer-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.timer-buttons button {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+  color: pink;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.timer-buttons button:hover {
+  background-color: #eeeded;
+  transform: translateY(-2px);
+}
+
+.timer-buttons button:active {
+  transform: translateY(0);
+}

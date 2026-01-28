@@ -8,6 +8,21 @@ const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
 const rewardItems = document.getElementById("rewardItems");
 const resetRewardsBtn = document.getElementById("resetRewardsBtn");
+const welcomeModal = document.getElementById("welcomeModal");
+const closeModalBtn = document.getElementById("closeModalBtn");
+
+// welcome modal functionality
+if (welcomeModal && closeModalBtn) {
+  const hasSeenWelcome = localStorage.getItem("hasSeenWelcome");
+
+  if (!hasSeenWelcome) {
+    welcomeModal.classList.remove("hidden");
+  }
+  closeModalBtn.addEventListener("click", function () {
+    welcomeModal.classList.add("hidden");
+    localStorage.setItem("hasSeenWelcome", "true");
+  });
+}
 
 if (resetRewardsBtn) {
   resetRewardsBtn.addEventListener("click", function () {

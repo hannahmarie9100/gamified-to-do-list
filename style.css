@@ -400,3 +400,39 @@ body {
   padding-top: 12px;
   text-align: center;
 }
+
+.welcome-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: grid;
+  place-items: center;
+  z-index: 1000;
+}
+
+.welcome-modal.hidden {
+  display: none;
+}
+
+.welcome-card {
+  background: #fff;
+  width: min(520px, 90vw);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.welcome-card button {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: #ff9a9e;
+  color: white;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
+}

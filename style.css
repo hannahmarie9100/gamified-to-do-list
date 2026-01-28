@@ -277,3 +277,27 @@ body {
 .timer-buttons button:active {
   transform: translateY(0);
 }
+
+/* Rewards Section */
+.reward-notif {
+  position: fixed;
+  top: 20px;
+  right: 350px;
+  width: 320px;
+  background-color: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  color: white;
+  padding: 15px 20px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: left 0.3s ease, opacity 0.3s ease;
+  z-index: 1000;
+  font-family: "Open Sans", sans-serif;
+}
+
+.reward-notif.show {
+  left: 20px;
+}
+
+.reward-notif:hover {
+  opacity: 0.9;
+}

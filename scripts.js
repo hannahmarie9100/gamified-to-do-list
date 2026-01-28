@@ -15,6 +15,71 @@ let timerInterval = null; //controls start and stop
 let totalTasksCompleted = 0;
 let rewards = [];
 
+//adding local storage functionality
+let tasks = [];
+
+function saveState() {
+  const data = {
+    tasks,
+    rewards,
+    totalTasksCompleted,
+  };
+  localStorage.setItem("gamifiedTodoState", JSON.stringify(data));
+}
+
+function loadState() {
+  const raw = localStorage.getItem("gamifiedTodoState");
+  if (!raw) return;
+
+  const data = JSON.parse(raw);
+  tasks = data.tasks || [];
+  rewards = data.rewards || [];
+  totalTasksCompleted = data.totalTasksCompleted || 0;
+}
+
+function renderAllTasks() {
+  taskList.innerHTML = ""; //clear existing tasks
+  tasks.forEach((task) => {
+    const li = document.createElement("li");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.checked = task.isCompleted;
+
+    const span = document.createElement("span");
+    span.textContent = task.text;
+
+    const deleteBtn = document.createElement("button");
+    deleteBtn.textContent = "×";
+    deleteBtn.classList.add("delete-btn");
+
+    li.classList.toggle("completed", task.isCompleted);
+
+    deleteBtn.addEventListener("click", function () {
+      tasks = tasks.filter((t) => t.id !== task.id);
+      saveState();
+      renderAllTasks();
+    });
+
+    checkbox.addEventListener("change", function () {
+      task.isCompleted = checkbox.checked;
+      li.classList.toggle("completed", task.isCompleted);
+
+      if (checkbox.checked && !task.beenCompleted) {
+        task.beenCompleted = true;
+        totalTasksCompleted++;
+        checkForRewards();
+      }
+
+      saveState();
+    });
+
+    li.appendChild(checkbox);
+    li.appendChild(span);
+    li.appendChild(deleteBtn);
+    taskList.appendChild(li);
+  });
+}
+
 function formatTime(seconds) {
   const mins = Math.floor(seconds / 60);
   const secs = seconds % 60;
@@ -22,6 +87,9 @@ function formatTime(seconds) {
     .toString()
     .padStart(2, "0")}`;
 }
+
+loadState();
+renderAllTasks();
 
 function renderTimer() {
   if (timerDisplay) {
@@ -88,48 +156,10 @@ addTaskBtn.addEventListener("click", function () {
   if (text == "") return; // if empty string
 
   const task = createTask(text);
-
-  const li = document.createElement("li"); // create new list item
-
-  const checkbox = document.createElement("input"); // create checkbox
-  checkbox.type = "checkbox"; // set checkbox type to checkbox
-
-  const span = document.createElement("span"); // create span element
-  span.textContent = text; // set span text content to task text
-
-  checkbox.task = task; //associate task object with checkbox
-
-  //creating a delete button
-  const deleteBtn = document.createElement("button");
-  deleteBtn.textContent = "×"; // set button text
-  deleteBtn.classList.add("delete-btn"); // add class to button
-
-  deleteBtn.addEventListener("click", function () {
-    li.remove(); // remove the task item from the list
-  });
-
-  checkbox.addEventListener("change", function () {
-    const task = this.task;
-    const isChecked = this.checked;
-
-    task.isCompleted = isChecked; //update task completion status
-
-    li.classList.toggle("completed", isChecked); //toggle completed class
-
-    if (isChecked && !task.beenCompleted) {
-      //if the task is checked and points haven't been awarded yet
-      task.beenCompleted = true; //mark task as having been completed
-      totalTasksCompleted++; //increment total tasks completed
-      checkForRewards(); //check if rewards should be given
-    }
-  });
-
-  li.appendChild(checkbox); // append checkbox to list item
-  li.appendChild(span); // append span to list item
-  li.appendChild(deleteBtn); // append delete button to list item
-  taskList.appendChild(li); // append list item to task list
-
-  taskInput.value = ""; // clear input field after adding task
+  tasks.push(task);
+  saveState();
+  renderAllTasks();
+  taskInput.value = ""; //clear input
 });
 
 function checkForRewards() {
@@ -141,12 +171,13 @@ function checkForRewards() {
 }
 
 function earnReward() {
-  const rewardTypes = ["1", "2", "3", "4", "5"];
+  const rewardTypes = ["🤣", "🥹", "😇", "🧐", "🤩"];
   const newReward = rewardTypes[rewards.length % rewardTypes.length];
   rewards.push(newReward);
 
   showRewardNotification(newReward);
   updateRewardsDisplay();
+  saveState();
 }
 
 function showRewardNotification(reward) {

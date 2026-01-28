@@ -12,7 +12,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: white;
+  background-color: #ebcbd1;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -23,22 +23,9 @@ body {
   margin-top: 60px;
   background-color: #ebcbd1;
   width: 100%;
-  max-width: 1000px;
-  padding: 20px;
+  max-width: 1100px;
+  padding: 32px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.WIP-banner {
-  background-color: #ffea97;
-  color: black;
-  text-align: center;
-  padding: 10px;
-  font-weight: bold;
-  border-radius: 5px;
-  margin-bottom: 5px;
-  width: 100%;
-  max-width: 1000px;
 }
 
 /* Font styles */
@@ -71,12 +58,12 @@ body {
 
 .app-header h1 {
   color: black;
-  font-size: 2.5em;
+  font-size: 3em;
 }
 
 .app-header p {
   color: #333;
-  font-size: 1.2em;
+  font-size: 1.3em;
   font-family: "Open Sans", sans-serif;
 }
 
@@ -189,7 +176,8 @@ body {
   border-radius: 999px;
   background-color: #ffffff;
   border: none;
-  font-size: 1em;
+  font-size: 0.9em;
+  white-space: nowrap;
   color: rgb(0, 0, 0);
   cursor: pointer;
   transition:
@@ -330,7 +318,7 @@ body {
   padding: 12x;
   display: grid;
   place-items: center;
-  min-height: 90px;
+  min-height: 110px;
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0);
 }
 
@@ -350,8 +338,8 @@ body {
 }
 
 .reward-item img {
-  max-width: 48px;
-  max-height: 48px;
+  max-width: 64px;
+  max-height: 64px;
 }
 
 .reward-item.locked {
@@ -363,4 +351,41 @@ body {
 
 .reward-item.locked img {
   opacity: 0;
+}
+
+.reward-toast {
+  position: fixed;
+  top: 20px;
+  right: -420px; /* start off-screen */
+  width: 360px;
+  background: pink;
+  color: #fff;
+  padding: 16px 20px;
+  border-radius: 14px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+  font-family: "Open Sans", sans-serif;
+  transition:
+    right 0.3s ease,
+    opacity 0.3s ease;
+  opacity: 0;
+  z-index: 1000;
+}
+
+.reward-toast.show {
+  right: 20px;
+  opacity: 1;
+}
+
+.reset-btn {
+  margin-top: 20px;
+  padding: 10px 15px;
+  border-radius: 5px;
+  background-color: white;
+  color: pink;
+  border: none;
+  font-size: 1em;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }

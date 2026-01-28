@@ -1,5 +1,3 @@
-localStorage.clear(); //for testing purposes only DELETE LATER
-
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
@@ -9,6 +7,16 @@ const startBtn = document.getElementById("startBtn");
 const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
 const rewardItems = document.getElementById("rewardItems");
+const resetRewardsBtn = document.getElementById("resetRewardsBtn");
+
+if (resetRewardsBtn) {
+  resetRewardsBtn.addEventListener("click", function () {
+    rewards = [];
+    totalTasksCompleted = 0;
+    saveState();
+    updateRewardsDisplay();
+  });
+}
 
 // Timer variables
 let elapsedSeconds = 0;
@@ -25,6 +33,15 @@ let tasks = [];
 const rewardCatalog = [
   "assets/images/pufferfish.svg",
   "assets/images/shark.svg",
+  "assets/images/deer.svg",
+  "assets/images/elephant.svg",
+  "assets/images/fish.svg",
+  "assets/images/gorilla.svg",
+  "assets/images/monkey.svg",
+  "assets/images/octopus.svg",
+  "assets/images/rat.svg",
+  "assets/images/whale.svg",
+  "assets/images/wolf.svg",
 ];
 
 function saveState() {
@@ -196,7 +213,15 @@ function earnReward() {
 }
 
 function showRewardNotification(reward) {
-  alert(`Congratulations! You've earned a reward!`);
+  const toast = document.getElementById("rewardToast");
+  if (!toast) return;
+
+  toast.textContent = `You earned a new reward! Go check it out!`;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, 3000); // Hide after 3 seconds
 }
 
 function updateRewardsDisplay() {

@@ -1,3 +1,5 @@
+localStorage.clear(); //for testing purposes only DELETE LATER
+
 const addTaskBtn = document.getElementById("addTaskBtn");
 const taskInput = document.getElementById("taskInput");
 const taskList = document.getElementById("taskList");
@@ -6,6 +8,7 @@ const timerDisplay = document.getElementById("timerDisplay");
 const startBtn = document.getElementById("startBtn");
 const pauseBtn = document.getElementById("pauseBtn");
 const resetBtn = document.getElementById("resetBtn");
+const rewardItems = document.getElementById("rewardItems");
 
 // Timer variables
 let elapsedSeconds = 0;
@@ -17,6 +20,12 @@ let rewards = [];
 
 //adding local storage functionality
 let tasks = [];
+
+//adding the rewards images
+const rewardCatalog = [
+  "assets/images/pufferfish.svg",
+  "assets/images/shark.svg",
+];
 
 function saveState() {
   const data = {
@@ -38,6 +47,8 @@ function loadState() {
 }
 
 function renderAllTasks() {
+  if (!taskList) return;
+
   taskList.innerHTML = ""; //clear existing tasks
   tasks.forEach((task) => {
     const li = document.createElement("li");
@@ -89,6 +100,7 @@ function formatTime(seconds) {
 }
 
 loadState();
+updateRewardsDisplay();
 renderAllTasks();
 
 function renderTimer() {
@@ -136,11 +148,13 @@ if (resetBtn) {
 renderTimer(); //initial render of timer display
 
 //allow enter when adding a task
-taskInput.addEventListener("keydown", (event) => {
-  if (event.key === "Enter") {
-    addTaskBtn.click();
-  }
-});
+if (taskInput && addTaskBtn) {
+  taskInput.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      addTaskBtn.click();
+    }
+  });
+}
 
 function createTask(text) {
   return {
@@ -150,17 +164,18 @@ function createTask(text) {
     id: Date.now(), // Unique ID based on timestamp
   };
 }
+if (addTaskBtn && taskInput) {
+  addTaskBtn.addEventListener("click", function () {
+    const text = taskInput.value.trim();
+    if (text == "") return; // if empty string
 
-addTaskBtn.addEventListener("click", function () {
-  const text = taskInput.value.trim();
-  if (text == "") return; // if empty string
-
-  const task = createTask(text);
-  tasks.push(task);
-  saveState();
-  renderAllTasks();
-  taskInput.value = ""; //clear input
-});
+    const task = createTask(text);
+    tasks.push(task);
+    saveState();
+    renderAllTasks();
+    taskInput.value = ""; //clear input
+  });
+}
 
 function checkForRewards() {
   //every 2 completed tasks, award a reward
@@ -181,10 +196,27 @@ function earnReward() {
 }
 
 function showRewardNotification(reward) {
-  alert(`Congratulations! You've earned a reward: ${reward}`);
+  alert(`Congratulations! You've earned a reward!`);
 }
 
 function updateRewardsDisplay() {
-  console.log("current rewards:", rewards);
-  //TODO: Update the UI to show rewards
+  if (!rewardItems) return;
+
+  rewardItems.innerHTML = ""; //clear existing rewards
+
+  rewardCatalog.forEach((src, index) => {
+    const item = document.createElement("div");
+    item.classList.add("reward-item");
+
+    if (index >= rewards.length) {
+      item.classList.add("locked"); //locked reward
+    }
+
+    const img = document.createElement("img");
+    img.src = src;
+    img.alt = "Reward";
+
+    item.appendChild(img);
+    rewardItems.appendChild(item);
+  });
 }

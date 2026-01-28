@@ -47,7 +47,10 @@ body {
   font-family: "Rubik Puddles", system-ui;
   font-weight: 400;
   font-style: normal;
-  text-shadow: 1px 0 0 currentColor, 0 1px 0 currentColor, -1px 0 0 currentColor,
+  text-shadow:
+    1px 0 0 currentColor,
+    0 1px 0 currentColor,
+    -1px 0 0 currentColor,
     0 -1px 0 currentColor;
 }
 
@@ -171,7 +174,9 @@ body {
   width: 200px;
   font-size: 1em;
 
-  transition: box-shadow 0.2s ease, transform 0.1s ease;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.1s ease;
 }
 
 .task-inputs input:focus {
@@ -187,7 +192,9 @@ body {
   font-size: 1em;
   color: rgb(0, 0, 0);
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }
 
 .task-inputs button:hover {
@@ -266,7 +273,9 @@ body {
   color: pink;
   font-size: 1em;
   cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
+  transition:
+    background-color 0.2s ease,
+    transform 0.1s ease;
 }
 
 .timer-buttons button:hover {
@@ -289,7 +298,9 @@ body {
   padding: 15px 20px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
   cursor: pointer;
-  transition: left 0.3s ease, opacity 0.3s ease;
+  transition:
+    left 0.3s ease,
+    opacity 0.3s ease;
   z-index: 1000;
   font-family: "Open Sans", sans-serif;
 }
@@ -300,4 +311,56 @@ body {
 
 .reward-notif:hover {
   opacity: 0.9;
+}
+
+/* reward grid */
+
+.reward-items {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+/* individual reward item */
+.reward-item {
+  background-color: white;
+  border: 2px solid #f3c6d3;
+  border-radius: 14px;
+  padding: 12x;
+  display: grid;
+  place-items: center;
+  min-height: 90px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0);
+}
+
+.reward-item:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  transform: translateY(-4px);
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.reward-item.locked::after {
+  content: "?";
+  position: absolute;
+  font-size: 28px;
+  color: #666;
+}
+
+.reward-item img {
+  max-width: 48px;
+  max-height: 48px;
+}
+
+.reward-item.locked {
+  background: #c9c9c9;
+  border-color: #b9b9b9;
+  filter: none;
+  opactiy: 1;
+}
+
+.reward-item.locked img {
+  opacity: 0;
 }

@@ -16,16 +16,17 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  padding: 10px;
 }
 
 .app {
   margin-top: 60px;
   background-color: #ebcbd1;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1400px;
   padding: 32px;
   border-radius: 10px;
+  padding-bottom: 50px;
 }
 
 /* Font styles */
@@ -93,24 +94,26 @@ body {
   display: flex;
   gap: 40px;
   width: 100%;
-  align-items: flex-start;
+  align-items: stretch;
   position: relative;
+  margin-bottom: 40px;
 }
 
 /* Timer Section */
 .timer-section {
-  flex: 0 0 42%; /* make the left card 42 percent width of the other */
-  height: 220px;
+  flex: 1; /* make the left card 42 percent width of the other */
+  height: auto;
   background: #d4b2b9;
   border-radius: 18px; /* rounded corners */
   overflow: hidden; /* IMPORTANT - hides overflow content */
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12); /* soft drop shadow */
   padding: 20px;
+  min-height: 320px;
 
   display: flex; /* stacks the timer and text */
   flex-direction: column; /* stacks the timer and text */
   align-items: center; /* centers the timer and text */
-  align-self: center; /* centers the card */
+  text-align: center; /* centers the timer and text */
   justify-content: center; /* centers the timer and text */
   gap: 18px;
 }
@@ -119,19 +122,21 @@ body {
   color: white;
   margin-bottom: 10px;
   font-size: 1.2em;
+  text-align: center;
   /* TODO: center text, change font */
 }
 
 .timer-section p {
   color: white;
-  font-size: 2em;
+  font-size: 3em;
+  margin: 0;
   /* TODO: center text, change font*/
 }
 
 /* Add Task Section */
 .add-task-section {
   flex: 1;
-  height: max-content;
+  height: auto;
   background: #ffe8ed;
   border-radius: 18px;
   overflow: hidden;
@@ -315,7 +320,7 @@ body {
   background-color: white;
   border: 2px solid #f3c6d3;
   border-radius: 14px;
-  padding: 12x;
+  padding: 12px;
   display: grid;
   place-items: center;
   min-height: 110px;
@@ -346,7 +351,7 @@ body {
   background: #c9c9c9;
   border-color: #b9b9b9;
   filter: none;
-  opactiy: 1;
+  opacity: 1;
 }
 
 .reward-item.locked img {
@@ -388,4 +393,10 @@ body {
   transition:
     background-color 0.2s ease,
     transform 0.1s ease;
+}
+
+.app-footer {
+  margin-top: 50px;
+  padding-top: 12px;
+  text-align: center;
 }
